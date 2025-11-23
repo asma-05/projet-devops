@@ -632,56 +632,12 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1001</td>
-                                <td>MelodyRose</td>
-                                <td>melody@example.com</td>
-                                <td>2024-01-15</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1002</td>
-                                <td>HarmonyLee</td>
-                                <td>harmony@example.com</td>
-                                <td>2024-02-03</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1003</td>
-                                <td>RhythmPatel</td>
-                                <td>rhythm@example.com</td>
-                                <td>2024-02-18</td>
-                                <td><span class="status-badge status-inactive">Inactive</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1004</td>
-                                <td>CadenceKim</td>
-                                <td>cadence@example.com</td>
-                                <td>2024-03-05</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                        <tbody id="users-tbody">
                         </tbody>
-                    </table>
+                        
+            </table>
                 </div>
             </div>
-            
             <div class="tab-content" id="premium-tab">
                 <div class="admin-section">
                     <h3><i class="fas fa-crown"></i> Premium User Management</h3>
@@ -697,43 +653,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1001</td>
-                                <td>MelodyRose</td>
-                                <td>Premium Individual</td>
-                                <td>2024-03-10</td>
-                                <td>2024-11-10</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn btn-warning"><i class="fas fa-ban"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1003</td>
-                                <td>RhythmPatel</td>
-                                <td>Premium Family</td>
-                                <td>2024-05-22</td>
-                                <td>2025-01-22</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn btn-warning"><i class="fas fa-ban"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1005</td>
-                                <td>BeatMaster</td>
-                                <td>Premium Student</td>
-                                <td>2024-06-15</td>
-                                <td>2024-12-15</td>
-                                <td><span class="status-badge status-pending">Pending</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn btn-warning"><i class="fas fa-ban"></i></button>
-                                </td>
-                            </tr>
+                        <tbody id="premium-tbody">
                         </tbody>
                     </table>
                 </div>
@@ -754,107 +674,55 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>5001</td>
-                                <td>Starlight Dreams</td>
-                                <td>Artist A</td>
-                                <td>Pop</td>
-                                <td>3:45</td>
-                                <td>45.2M</td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5002</td>
-                                <td>Midnight Stories</td>
-                                <td>Artist B</td>
-                                <td>Indie</td>
-                                <td>4:12</td>
-                                <td>38.7M</td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5003</td>
-                                <td>Electric Pulse</td>
-                                <td>Artist C</td>
-                                <td>Electronic</td>
-                                <td>3:28</td>
-                                <td>35.1M</td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5004</td>
-                                <td>Ocean Breeze</td>
-                                <td>Artist D</td>
-                                <td>Pop</td>
-                                <td>4:05</td>
-                                <td>29.4M</td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                        <tbody id="songs-tbody">
                         </tbody>
                     </table>
                 </div>
                 
-                <div class="admin-section">
-                    <h3><i class="fas fa-plus-circle"></i> Add New Song</h3>
-                    <form class="admin-form" id="add-song-form">
-                        <div class="form-group">
-                            <label for="song-title">Song Title</label>
-                            <input type="text" id="song-title" class="form-control" placeholder="Enter song title" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="song-artist">Artist</label>
-                            <input type="text" id="song-artist" class="form-control" placeholder="Enter artist name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="song-album">Album</label>
-                            <input type="text" id="song-album" class="form-control" placeholder="Enter album name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="song-genre">Genre</label>
-                            <select id="song-genre" class="form-control" required>
-                                <option value="">Select Genre</option>
-                                <option value="pop">Pop</option>
-                                <option value="rock">Rock</option>
-                                <option value="hiphop">Hip Hop</option>
-                                <option value="electronic">Electronic</option>
-                                <option value="jazz">Jazz</option>
-                                <option value="classical">Classical</option>
-                                <option value="country">Country</option>
-                                <option value="r&b">R&B</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="song-duration">Duration</label>
-                            <input type="text" id="song-duration" class="form-control" placeholder="e.g., 3:45" required>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="song-file">Audio File</label>
-                            <input type="file" id="song-file" class="form-control" accept="audio/*" required>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-plus"></i> Add Song
-                        </button>
-                    </form>
-                </div>
+                <form class="admin-form" id="add-song-form" action="admin.php" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="song-title">Song Title</label>
+        <input type="text" name="title" id="song-title" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="song-artist">Artist</label>
+        <input type="text" name="artist" id="song-artist" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="song-album">Album</label>
+        <input type="text" name="album" id="song-album" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="song-genre">Genre</label>
+        <select id="song-genre" name="genre" class="form-control" required>
+            <option value="">Select Genre</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="hiphop">Hip Hop</option>
+            <option value="electronic">Electronic</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="song-duration">Duration</label>
+        <input type="text" name="duration" id="song-duration" class="form-control" required>
+    </div>
+
+    <div class="form-group full-width">
+        <label for="song-file">Audio File</label>
+        <input type="file" name="file" id="song-file" class="form-control" accept="audio/*" required>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        <i class="fas fa-plus"></i> Add Song
+    </button>
+
+</form>
+
             </div>
             
             <div class="tab-content" id="playlists-tab">
@@ -872,55 +740,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>7001</td>
-                                <td>Top 50 Global</td>
-                                <td>mymelody</td>
-                                <td>50</td>
-                                <td>24.5M</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7002</td>
-                                <td>Chill Vibes</td>
-                                <td>mymelody</td>
-                                <td>30</td>
-                                <td>18.3M</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7003</td>
-                                <td>Workout Hits</td>
-                                <td>mymelody</td>
-                                <td>25</td>
-                                <td>15.7M</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7004</td>
-                                <td>Love Songs</td>
-                                <td>MelodyRose</td>
-                                <td>18</td>
-                                <td>2.4K</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>
-                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                </td>
-                            </tr>
+                        <tbody id="playlists-tbody">
                         </tbody>
                     </table>
                 </div>
@@ -929,46 +749,7 @@
             <div class="tab-content" id="feedback-tab">
                 <div class="admin-section">
                     <h3><i class="fas fa-comment"></i> User Feedback</h3>
-                    <div class="feedback-item">
-                        <div class="feedback-header">
-                            <span class="feedback-user">MelodyRose</span>
-                            <span class="feedback-date">Oct 15, 2024</span>
-                        </div>
-                        <div class="feedback-content">
-                            Love the new playlist feature! It would be great if we could collaborate on playlists with friends.
-                        </div>
-                        <div class="feedback-actions">
-                            <button class="action-btn btn-success"><i class="fas fa-check"></i> Mark as Read</button>
-                            <button class="action-btn"><i class="fas fa-reply"></i> Reply</button>
-                        </div>
-                    </div>
-                    
-                    <div class="feedback-item">
-                        <div class="feedback-header">
-                            <span class="feedback-user">RhythmPatel</span>
-                            <span class="feedback-date">Oct 14, 2024</span>
-                        </div>
-                        <div class="feedback-content">
-                            The audio quality on some older songs seems lower than expected. Could you check the files?
-                        </div>
-                        <div class="feedback-actions">
-                            <button class="action-btn btn-success"><i class="fas fa-check"></i> Mark as Read</button>
-                            <button class="action-btn"><i class="fas fa-reply"></i> Reply</button>
-                        </div>
-                    </div>
-                    
-                    <div class="feedback-item">
-                        <div class="feedback-header">
-                            <span class="feedback-user">CadenceKim</span>
-                            <span class="feedback-date">Oct 12, 2024</span>
-                        </div>
-                        <div class="feedback-content">
-                            The mobile app crashes occasionally when switching between playlists. I'm using iOS 17.
-                        </div>
-                        <div class="feedback-actions">
-                            <button class="action-btn btn-success"><i class="fas fa-check"></i> Mark as Read</button>
-                            <button class="action-btn"><i class="fas fa-reply"></i> Reply</button>
-                        </div>
+                    <div id="feedback-list">
                     </div>
                 </div>
             </div>
@@ -1008,24 +789,6 @@
             });
         });
         
-        // Add song form submission
-        document.getElementById('add-song-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const title = document.getElementById('song-title').value;
-            const artist = document.getElementById('song-artist').value;
-            const album = document.getElementById('song-album').value;
-            const genre = document.getElementById('song-genre').value;
-            const duration = document.getElementById('song-duration').value;
-            
-            // In a real app, this would send data to the server
-            alert(`Song "${title}" by ${artist} has been added to the database!`);
-            
-            // Reset form
-            document.getElementById('add-song-form').reset();
-        });
-        
         // Refresh button
         document.getElementById('refresh-btn').addEventListener('click', () => {
             // In a real app, this would refresh data from the server
@@ -1035,9 +798,8 @@
         // Logout button
         document.getElementById('logout-btn').addEventListener('click', () => {
             if (confirm('Are you sure you want to logout?')) {
-                // In a real app, this would clear session and redirect
                 alert('You have been logged out. Redirecting to login page...');
-                // window.location.href = 'main.html';
+                window.location.href = 'main.html';
             }
         });
         
@@ -1047,8 +809,173 @@
         
         if (!isAdmin) {
             alert('You do not have permission to access the admin panel.');
-            // window.location.href = 'main.html';
+            window.location.href = 'main.html';
         }
+    </script>
+    <script>
+        // --- Client-side logic to connect with admin.php API ---
+        async function fetchData() {
+            try {
+                const res = await fetch('admin.php?action=fetch');
+                const json = await res.json();
+                if (!json.success) throw new Error(json.error || 'Failed to fetch');
+                populateAll(json.data);
+            } catch (err) {
+                console.error(err);
+                alert('Error fetching admin data: ' + err.message);
+            }
+        }
+
+        function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
+
+        function populateAll(data) {
+            // counts
+            document.querySelectorAll('.stat-value')[0].textContent = data.counts.users;
+            document.querySelectorAll('.stat-value')[1].textContent = data.counts.premium;
+            document.querySelectorAll('.stat-value')[2].textContent = data.counts.songs;
+            document.querySelectorAll('.stat-value')[3].textContent = data.counts.playlists;
+
+            // users
+            const usersTbody = document.getElementById('users-tbody');
+            usersTbody.innerHTML = '';
+            data.users.forEach(u => {
+                const tr = el('tr');
+                tr.innerHTML = `
+                    <td>${escapeHtml(u.id)}</td>
+                    <td>${escapeHtml(u.username || u.name || '')}</td>
+                    <td>${escapeHtml(u.email || '')}</td>
+                    <td>${escapeHtml(u.created_at || u.join_date || '')}</td>
+                    <td>${escapeHtml(u.status || '')}</td>
+                    <td><button class="action-btn btn-danger" data-type="delete_user" data-id="${u.id}"><i class="fas fa-trash"></i></button></td>
+                `;
+                usersTbody.appendChild(tr);
+            });
+
+            // premium
+            const premTbody = document.getElementById('premium-tbody');
+            premTbody.innerHTML = '';
+            data.premium_users.forEach(p => {
+                const tr = el('tr');
+                tr.innerHTML = `
+                    <td>${escapeHtml(p.user_id || p.id)}</td>
+                    <td>${escapeHtml(p.username || '')}</td>
+                    <td>${escapeHtml(p.plan_type || p.plan || '')}</td>
+                    <td>${escapeHtml(p.start_date || '')}</td>
+                    <td>${escapeHtml(p.renewal_date || '')}</td>
+                    <td>${escapeHtml(p.status || '')}</td>
+                    <td><button class="action-btn btn-warning" data-type="delete_premium" data-id="${p.user_id || p.id}"><i class="fas fa-ban"></i></button></td>
+                `;
+                premTbody.appendChild(tr);
+            });
+
+            // songs
+            const songsTbody = document.getElementById('songs-tbody');
+            songsTbody.innerHTML = '';
+            data.songs.forEach(s => {
+                const tr = el('tr');
+                tr.innerHTML = `
+                    <td>${escapeHtml(s.id)}</td>
+                    <td>${escapeHtml(s.title || s.name || '')}</td>
+                    <td>${escapeHtml(s.artist || '')}</td>
+                    <td>${escapeHtml(s.genre || '')}</td>
+                    <td>${escapeHtml(s.duration || '')}</td>
+                    <td>${escapeHtml(s.plays || s.play_count || '')}</td>
+                    <td><button class="action-btn btn-danger" data-type="delete_song" data-id="${s.id}"><i class="fas fa-trash"></i></button></td>
+                `;
+                songsTbody.appendChild(tr);
+            });
+
+            // playlists
+            const plTbody = document.getElementById('playlists-tbody');
+            plTbody.innerHTML = '';
+            data.playlists.forEach(p => {
+                const tr = el('tr');
+                tr.innerHTML = `
+                    <td>${escapeHtml(p.id)}</td>
+                    <td>${escapeHtml(p.name || p.title || '')}</td>
+                    <td>${escapeHtml(p.creator || '')}</td>
+                    <td>${escapeHtml(p.songs || p.song_count || '')}</td>
+                    <td>${escapeHtml(p.followers || '')}</td>
+                    <td>${escapeHtml(p.status || '')}</td>
+                    <td><button class="action-btn" data-type="delete_playlist" data-id="${p.id}"><i class="fas fa-trash"></i></button></td>
+                `;
+                plTbody.appendChild(tr);
+            });
+
+            // feedback
+            const fList = document.getElementById('feedback-list');
+            fList.innerHTML = '';
+            data.feedbacks.forEach(f => {
+                const item = el('div', 'feedback-item');
+                const header = el('div', 'feedback-header');
+                header.innerHTML = `<span class='feedback-user'>${escapeHtml(f.username || f.user || '')}</span><span class='feedback-date'>${escapeHtml(f.created_at || f.date || '')}</span>`;
+                const content = el('div', 'feedback-content');
+                content.innerHTML = nl2br(escapeHtml(f.content || f.message || f.feedback || ''));
+                const actions = el('div', 'feedback-actions');
+                const delBtn = el('button', 'action-btn btn-danger');
+                delBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                delBtn.dataset.type = 'delete_feedback';
+                delBtn.dataset.id = f.id;
+                actions.appendChild(delBtn);
+                item.appendChild(header);
+                item.appendChild(content);
+                item.appendChild(actions);
+                fList.appendChild(item);
+            });
+
+            // attach delegated delete handlers
+            attachDeleteHandlers();
+        }
+
+        function attachDeleteHandlers() {
+            document.querySelectorAll('[data-type^="delete_"]').forEach(btn => {
+                btn.onclick = async (e) => {
+                    const type = btn.dataset.type;
+                    const id = btn.dataset.id;
+                    if (!confirm('Confirm delete?')) return;
+                    try {
+                        const fd = new FormData();
+                        fd.append('type', type);
+                        fd.append('id', id);
+                        const res = await fetch('admin.php?action=delete', { method: 'POST', body: fd });
+                        const j = await res.json();
+                        if (!j.success) throw new Error(j.error || 'Delete failed');
+                        alert('Deleted');
+                        fetchData();
+                    } catch (err) {
+                        alert('Delete error: ' + err.message);
+                    }
+                };
+            });
+        }
+
+        // Add-song form handler
+        document.getElementById('add-song-form')?.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const fd = new FormData(form);
+            fd.append('action', 'add_song');
+            try {
+                const res = await fetch('admin.php?action=add_song', { method: 'POST', body: fd });
+                const j = await res.json();
+                if (!j.success) throw new Error(j.error || 'Failed');
+                alert('Song added');
+                form.reset();
+                fetchData();
+            } catch (err) {
+                alert('Add song error: ' + err.message);
+            }
+        });
+
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function nl2br(str) { return str.replace(/\n/g, '<br>'); }
+
+        // initial load
+        fetchData();
     </script>
 </body>
 </html>
