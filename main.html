@@ -905,23 +905,7 @@
     </div>
 
     <script>
-        // Database simulation (in a real app, this would connect to your SQL database)
-        const melodiesDB = {
-            users: [
-                { id: 1, username: 'musiclover', email: 'user@example.com', password: 'password123', joinDate: '2024-01-15', playlists: 5, followers: 24, following: 18 }
-            ],
-            songs: [
-                { id: 1, title: "Starlight Dreams", artist: "Artist A", album: "Dreamscapes", duration: "3:45", genre: "Pop", releaseDate: "2024-03-10", plays: 45200000, likes: 2100000 },
-                { id: 2, title: "Midnight Stories", artist: "Artist B", album: "Night Tales", duration: "4:12", genre: "Indie", releaseDate: "2024-02-28", plays: 38700000, likes: 1800000 },
-                { id: 3, title: "Electric Pulse", artist: "Artist C", album: "Energy", duration: "3:28", genre: "Electronic", releaseDate: "2024-04-05", plays: 35100000, likes: 1500000 }
-            ],
-            playlists: [
-                { id: 1, name: "Top 50 Global", creator: "mymelody", songs: 50, followers: 24500000, public: true },
-                { id: 2, name: "Chill Vibes", creator: "mymelody", songs: 30, followers: 18300000, public: true },
-                { id: 3, name: "Workout Hits", creator: "mymelody", songs: 25, followers: 15700000, public: true }
-            ]
-        };
-
+       
         // Current user state
         let currentUser = null;
 
