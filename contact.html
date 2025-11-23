@@ -829,28 +829,28 @@
             
             <section class="contact-form">
                 <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
-                <form>
+                <form method="POST" action="contact.php">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" placeholder="What is this regarding?" required>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="What is this regarding?" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" name="contact" value="1" class="submit-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
@@ -864,7 +864,7 @@
                 <p>Unlock unlimited music, ad-free listening, and exclusive features</p>
             </div>
             
-            <form class="subscription-form">
+            <form class="subscription-form" method="POST" action="contact.php">
                 <div class="subscription-options">
                     <div class="subscription-card selected">
                         <h4><i class="fas fa-star"></i> Premium Individual</h4>
@@ -877,7 +877,7 @@
                             <li><i class="fas fa-check"></i> Cancel anytime</li>
                         </ul>
                         <div class="checkbox-group">
-                            <input type="radio" name="subscription" id="individual" checked>
+                            <input type="radio" name="subscription" id="individual" value="individual" checked>
                             <label for="individual">Select this plan</label>
                         </div>
                     </div>
@@ -893,7 +893,7 @@
                             <li><i class="fas fa-check"></i> Cancel anytime</li>
                         </ul>
                         <div class="checkbox-group">
-                            <input type="radio" name="subscription" id="family">
+                            <input type="radio" name="subscription" id="family" value="family">
                             <label for="family">Select this plan</label>
                         </div>
                     </div>
@@ -909,7 +909,7 @@
                             <li><i class="fas fa-check"></i> Cancel anytime</li>
                         </ul>
                         <div class="checkbox-group">
-                            <input type="radio" name="subscription" id="student">
+                            <input type="radio" name="subscription" id="student" value="student">
                             <label for="student">Select this plan</label>
                         </div>
                     </div>
@@ -921,23 +921,23 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" class="form-control" placeholder="Your first name" required>
+                            <input type="text" id="first-name" class="form-control" placeholder="Your first name" name="first_name" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" class="form-control" placeholder="Your last name" required>
+                            <input type="text" id="last-name" class="form-control" placeholder="Your last name" name="last_name" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="sub-email">Email Address</label>
-                        <input type="email" id="sub-email" class="form-control" placeholder="Your email address" required>
+                        <input type="email" id="sub-email" name="sub_email" class="form-control" placeholder="Your email address" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="password">Create Password</label>
-                        <input type="password" id="password" class="form-control" placeholder="Create a secure password" required>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Create a secure password" required>
                     </div>
                     
                     <div class="form-group">
@@ -971,27 +971,27 @@
                         <label>Preferred Music Genres</label>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="pop">
+                                <input type="checkbox" id="pop" name="music_genres[]">
                                 <label for="pop">Pop</label>
                             </div>
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="rock">
+                                <input type="checkbox" id="rock" name="music_genres[]">
                                 <label for="rock">Rock</label>
                             </div>
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="hiphop">
+                                <input type="checkbox" id="hiphop" name="music_genres[]">
                                 <label for="hiphop">Hip Hop</label>
                             </div>
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="electronic">
+                                <input type="checkbox" id="electronic" name="music_genres[]">
                                 <label for="electronic">Electronic</label>
                             </div>
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="jazz">
+                                <input type="checkbox" id="jazz" name="music_genres[]">
                                 <label for="jazz">Jazz</label>
                             </div>
                             <div class="checkbox-group" style="margin-bottom: 0;">
-                                <input type="checkbox" id="classical">
+                                <input type="checkbox" id="classical" name="music_genres[]">
                                 <label for="classical">Classical</label>
                             </div>
                         </div>
@@ -1017,25 +1017,21 @@
                     
                     <div class="form-group">
                         <label for="card-number">Card Number</label>
-                        <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+                        <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" name="card" required>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="expiry">Expiry Date</label>
-                            <input type="text" id="expiry" class="form-control" placeholder="MM/YY" required>
+                            <input type="text" id="expiry" name="expiry" class="form-control" placeholder="MM/YY" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                            <input type="text" id="cvv" name="cvv" class="form-control" placeholder="123" required>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="billing-address">Billing Address</label>
-                        <input type="text" id="billing-address" class="form-control" placeholder="Your billing address" required>
-                    </div>
                     
                     <div class="checkbox-group">
                         <input type="checkbox" id="terms" required>
@@ -1047,7 +1043,7 @@
                         <label for="marketing">Send me special offers and music recommendations</label>
                     </div>
                     
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" name="subscribe" value="1" class="submit-btn">
                         <i class="fas fa-crown"></i> Start Your Premium Subscription
                     </button>
                 </div>
