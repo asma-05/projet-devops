@@ -689,7 +689,7 @@
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
             <div class="search-suggestions" id="search-suggestions">
-                <!-- Suggestions will be populated by JavaScript -->
+                
             </div>
         </div>
     </header>
@@ -848,7 +848,7 @@
         </div>
     </footer>
     
-    <!-- Login Modal -->
+   
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <button class="close-modal" id="close-login">&times;</button>
@@ -872,7 +872,7 @@
         </div>
     </div>
     
-    <!-- Register Modal -->
+    
     <div class="modal" id="register-modal">
         <div class="modal-content">
             <button class="close-modal" id="close-register">&times;</button>
@@ -906,10 +906,10 @@
 
     <script>
        
-        // Current user state
+        
         let currentUser = null;
 
-        // DOM elements
+        
         const loginBtn = document.getElementById('login-btn');
         const registerBtn = document.getElementById('register-btn');
         const loginModal = document.getElementById('login-modal');
@@ -924,7 +924,7 @@
         const searchInput = document.getElementById('search-input');
         const searchSuggestions = document.getElementById('search-suggestions');
 
-        // Modal controls
+
         loginBtn.addEventListener('click', () => {
             loginModal.classList.add('active');
         });
@@ -953,7 +953,7 @@
             loginModal.classList.add('active');
         });
 
-        // Close modals when clicking outside
+      
         window.addEventListener('click', (e) => {
             if (e.target === loginModal) {
                 loginModal.classList.remove('active');
@@ -964,19 +964,19 @@
         });
 
 
-        // Login form submission
+       
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             var email = document.getElementById('login-email').value;
             var password = document.getElementById('login-password').value;
             
-            // Show loading state
+          
             var submitBtn = loginForm.querySelector('.submit-btn');
             var originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
             submitBtn.disabled = true;
             
-            // Send data to login.php
+            
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'login.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -987,9 +987,9 @@
                     if (response.startsWith('success')) {
                         var username = response.replace('success:', '');
                         
-                        // Check if it's admin login
+                        
                         if (username === 'admin') {
-                            // Set admin flag and redirect to admin page
+                            
                             sessionStorage.setItem('isAdmin', 'true');
                             localStorage.setItem('isAdmin', 'true');
                             window.location.href = 'admin.html';
@@ -1007,14 +1007,14 @@
                     alert('Login failed. Please try again.');
                 }
                 
-                // Reset button state
+                
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             };
             
             xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
         });
-// Register form submission
+
 registerForm.addEventListener('submit', function(e) {
     e.preventDefault();
     var username = document.getElementById('register-username').value;
@@ -1027,13 +1027,13 @@ registerForm.addEventListener('submit', function(e) {
         return;
     }
     
-    // Show loading state
+
     var submitBtn = registerForm.querySelector('.submit-btn');
     var originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
     submitBtn.disabled = true;
     
-    // Send data to register.php
+ 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'register.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -1053,45 +1053,45 @@ registerForm.addEventListener('submit', function(e) {
             alert('Registration failed. Please try again.');
         }
         
-        // Reset button state
+        
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     };
     
     xhr.send('username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
 });
-        // Update UI when user logs in
+        
 function updateUIForUser() {
     if (currentUser) {
-        // Update user actions
+       
         var userActions = document.querySelector('.user-actions');
         userActions.innerHTML = '<button id="profile-btn"><i class="fas fa-user"></i> ' + currentUser.username + '</button><button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>';
         
-        // Update user card
+       
         var userCard = document.querySelector('.user-card');
         userCard.innerHTML = '<div class="user-avatar"><i class="fas fa-user"></i></div><h3>' + currentUser.username + '</h3><p>Welcome back!</p><div class="user-stats"><div class="stat"><div class="stat-value">0</div><div class="stat-label">Playlists</div></div><div class="stat"><div class="stat-value">0</div><div class="stat-label">Followers</div></div><div class="stat"><div class="stat-value">0</div><div class="stat-label">Following</div></div></div>';
         
-        // Add event listeners for new buttons
+        
         document.getElementById('logout-btn').addEventListener('click', logout);
         document.getElementById('profile-btn').addEventListener('click', function() {
             alert('Profile page for ' + currentUser.username + ' would open here.');
         });
     }
 }
-// Logout function
+
 function logout() {
-    // You can also create a logout.php file to handle session destruction
+   
     fetch('logout.php', {
         method: 'POST'
     })
     .then(function() {
         currentUser = null;
         alert('You have been logged out.');
-        location.reload(); // Refresh the page to reset UI
+        location.reload(); 
     })
     .catch(function(error) {
         console.error('Error:', error);
-        // Fallback: just reload the page
+        
         location.reload();
     });
 }
@@ -1099,7 +1099,7 @@ function logout() {
         function performSearch(query) {
             if (!query.trim()) return;
             
-            // In a real app, this would query the SQL database
+           
             const results = {
                 songs: melodiesDB.songs.filter(song => 
                     song.title.toLowerCase().includes(query.toLowerCase()) || 
@@ -1113,7 +1113,7 @@ function logout() {
                 )
             };
             
-            // For demo purposes, just show an alert
+            
             const totalResults = results.songs.length + results.playlists.length + results.users.length;
             if (totalResults > 0) {
                 alert(`Found ${totalResults} results for "${query}". In the full app, these would be displayed.`);
@@ -1130,7 +1130,7 @@ function logout() {
                 return;
             }
             
-            // Simple suggestion algorithm
+           
             const allItems = [
                 ...melodiesDB.songs.map(song => ({ type: 'song', title: song.title, subtitle: song.artist, icon: 'fas fa-music' })),
                 ...melodiesDB.playlists.map(playlist => ({ type: 'playlist', title: playlist.name, subtitle: `By ${playlist.creator}`, icon: 'fas fa-list' })),
@@ -1171,7 +1171,7 @@ function logout() {
             searchSuggestions.classList.add('active');
         }
 
-        // Quick action buttons
+       
         document.getElementById('create-playlist-btn').addEventListener('click', () => {
             if (currentUser) {
                 alert('Playlist creation dialog would open here.');
@@ -1203,7 +1203,7 @@ function logout() {
             }
         });
 
-        // Close suggestions when clicking outside
+        
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.search-container')) {
                 searchSuggestions.classList.remove('active');
