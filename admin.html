@@ -770,32 +770,32 @@
     </footer>
 
     <script>
-        // Tab functionality
+        
         const tabButtons = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
+                
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to clicked button
+                
                 button.classList.add('active');
                 
-                // Show corresponding content
+                
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(`${tabId}-tab`).classList.add('active');
             });
         });
         
-        // Refresh button
+        
         document.getElementById('refresh-btn').addEventListener('click', () => {
-            // In a real app, this would refresh data from the server
+            
             alert('Data refreshed!');
         });
         
-        // Logout button
+        
         document.getElementById('logout-btn').addEventListener('click', () => {
             if (confirm('Are you sure you want to logout?')) {
                 alert('You have been logged out. Redirecting to login page...');
@@ -803,9 +803,8 @@
             }
         });
         
-        // Simulate admin login check
-        // In a real app, this would check if the user is an admin
-        const isAdmin = true; // This would come from your authentication system
+        
+        const isAdmin = true;
         
         if (!isAdmin) {
             alert('You do not have permission to access the admin panel.');
@@ -813,7 +812,7 @@
         }
     </script>
     <script>
-        // --- Client-side logic to connect with admin.php API ---
+       
         async function fetchData() {
             try {
                 const res = await fetch('admin.php?action=fetch');
@@ -829,13 +828,13 @@
         function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
 
         function populateAll(data) {
-            // counts
+            
             document.querySelectorAll('.stat-value')[0].textContent = data.counts.users;
             document.querySelectorAll('.stat-value')[1].textContent = data.counts.premium;
             document.querySelectorAll('.stat-value')[2].textContent = data.counts.songs;
             document.querySelectorAll('.stat-value')[3].textContent = data.counts.playlists;
 
-            // users
+           
             const usersTbody = document.getElementById('users-tbody');
             usersTbody.innerHTML = '';
             data.users.forEach(u => {
@@ -851,7 +850,7 @@
                 usersTbody.appendChild(tr);
             });
 
-            // premium
+            
             const premTbody = document.getElementById('premium-tbody');
             premTbody.innerHTML = '';
             data.premium_users.forEach(p => {
@@ -868,7 +867,7 @@
                 premTbody.appendChild(tr);
             });
 
-            // songs
+            
             const songsTbody = document.getElementById('songs-tbody');
             songsTbody.innerHTML = '';
             data.songs.forEach(s => {
@@ -885,7 +884,7 @@
                 songsTbody.appendChild(tr);
             });
 
-            // playlists
+            
             const plTbody = document.getElementById('playlists-tbody');
             plTbody.innerHTML = '';
             data.playlists.forEach(p => {
@@ -902,7 +901,7 @@
                 plTbody.appendChild(tr);
             });
 
-            // feedback
+            
             const fList = document.getElementById('feedback-list');
             fList.innerHTML = '';
             data.feedbacks.forEach(f => {
@@ -923,7 +922,7 @@
                 fList.appendChild(item);
             });
 
-            // attach delegated delete handlers
+           
             attachDeleteHandlers();
         }
 
@@ -949,7 +948,7 @@
             });
         }
 
-        // Add-song form handler
+        
         document.getElementById('add-song-form')?.addEventListener('submit', async function (e) {
             e.preventDefault();
             const form = e.target;
@@ -974,7 +973,7 @@
 
         function nl2br(str) { return str.replace(/\n/g, '<br>'); }
 
-        // initial load
+        
         fetchData();
     </script>
 </body>
