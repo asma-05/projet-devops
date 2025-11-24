@@ -1,17 +1,17 @@
 <?php
 require_once 'config.php';
 
-// Handle contact form submission
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contact'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $subject = mysqli_real_escape_string($conn, $_POST['subject']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
     
-    // Get user ID if logged in, otherwise set to NULL
+   
     $user_id = NULL;
     if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
-        // Verify that the user exists in the database
+       
         $user_check_sql = "SELECT id FROM users WHERE id = '" . $_SESSION['user_id'] . "'";
         $user_check_result = mysqli_query($conn, $user_check_sql);
         
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contact'])) {
         }
     }
     
-    // Insert feedback with proper user_id handling
+   
     if ($user_id) {
         $sql = "INSERT INTO feedbacks (user_id, subject, message) VALUES ('$user_id', '$subject', '$message')";
     } else {
@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contact'])) {
     exit;
 }
 
-// Handle premium subscription
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe'])) {
-    // Get the logged-in user ID
+   
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
     
     if (!$user_id) {
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe'])) {
         exit;
     }
     
-    // Verify that the user exists
+    
     $user_check_sql = "SELECT id FROM users WHERE id = '$user_id'";
     $user_check_result = mysqli_query($conn, $user_check_sql);
     
@@ -62,15 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe'])) {
     $start_date = date("Y-m-d");
     $renewal_date = date("Y-m-d", strtotime("+30 days"));
     
-    // Check if user already has a premium subscription
+   
     $check_sql = "SELECT * FROM premium_users WHERE user_id = '$user_id'";
     $check_result = mysqli_query($conn, $check_sql);
     
     if (mysqli_num_rows($check_result) > 0) {
-        // Update existing subscription
+        
         $sql = "UPDATE premium_users SET plan_type = '$plan', start_date = '$start_date', renewal_date = '$renewal_date', status = 'active' WHERE user_id = '$user_id'";
     } else {
-        // Insert new subscription
+        
         $sql = "INSERT INTO premium_users (user_id, plan_type, start_date, renewal_date, status) 
                 VALUES ('$user_id', '$plan', '$start_date', '$renewal_date', 'active')";
     }
