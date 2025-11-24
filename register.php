@@ -1,5 +1,5 @@
 <?php
-// register.php
+
 require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = $_POST['password'];
     
-    // Check if user already exists
+  
     $check_sql = "SELECT id FROM users WHERE email = '$email' OR username = '$username'";
     $check_result = mysqli_query($conn, $check_sql);
     
