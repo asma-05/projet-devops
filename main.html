@@ -963,47 +963,57 @@
             }
         });
 
+
         // Login form submission
-loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var email = document.getElementById('login-email').value;
-    var password = document.getElementById('login-password').value;
-    
-    // Show loading state
-    var submitBtn = loginForm.querySelector('.submit-btn');
-    var originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-    submitBtn.disabled = true;
-    
-    // Send data to login.php
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'login.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = xhr.responseText;
-            if (response.startsWith('success')) {
-                var username = response.replace('success: Login successful!', '');
-                alert('Login successful!');
-                loginModal.classList.remove('active');
-                loginForm.reset();
-                currentUser = { username: username.trim() };
-                updateUIForUser();
-            } else {
-                alert('Login failed: ' + response.replace('error: ', ''));
-            }
-        } else {
-            alert('Login failed. Please try again.');
-        }
-        
-        // Reset button state
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    };
-    
-    xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
-});
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = document.getElementById('login-email').value;
+            var password = document.getElementById('login-password').value;
+            
+            // Show loading state
+            var submitBtn = loginForm.querySelector('.submit-btn');
+            var originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+            submitBtn.disabled = true;
+            
+            // Send data to login.php
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'login.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = xhr.responseText;
+                    if (response.startsWith('success')) {
+                        var username = response.replace('success:', '');
+                        
+                        // Check if it's admin login
+                        if (username === 'admin') {
+                            // Set admin flag and redirect to admin page
+                            sessionStorage.setItem('isAdmin', 'true');
+                            localStorage.setItem('isAdmin', 'true');
+                            window.location.href = 'admin.html';
+                        } else {
+                            alert('Login successful!');
+                            loginModal.classList.remove('active');
+                            loginForm.reset();
+                            currentUser = { username: username.trim() };
+                            updateUIForUser();
+                        }
+                    } else {
+                        alert('Login failed: ' + response.replace('error: ', ''));
+                    }
+                } else {
+                    alert('Login failed. Please try again.');
+                }
+                
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            };
+            
+            xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+        });
 // Register form submission
 registerForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1202,3 +1212,4 @@ function logout() {
     </script>
 </body>
 </html>
+
