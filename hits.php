@@ -1,8 +1,8 @@
 <?php
-// hits.php
+
 require_once 'config.php';
 
-// Get top songs
+
 $top_songs_sql = "SELECT * FROM songs ORDER BY plays DESC LIMIT 10";
 $top_songs_result = mysqli_query($conn, $top_songs_sql);
 $top_songs = array();
@@ -12,7 +12,7 @@ if (mysqli_num_rows($top_songs_result) > 0) {
     }
 }
 
-// Get most loved songs
+
 $loved_songs_sql = "SELECT * FROM songs ORDER BY likes DESC LIMIT 10";
 $loved_songs_result = mysqli_query($conn, $loved_songs_sql);
 $loved_songs = array();
@@ -22,7 +22,7 @@ if (mysqli_num_rows($loved_songs_result) > 0) {
     }
 }
 
-// Get top artists
+
 $artists_sql = "SELECT artist, COUNT(*) as song_count, SUM(plays) as total_plays FROM songs GROUP BY artist ORDER BY total_plays DESC LIMIT 5";
 $artists_result = mysqli_query($conn, $artists_sql);
 $top_artists = array();
@@ -32,7 +32,7 @@ if (mysqli_num_rows($artists_result) > 0) {
     }
 }
 
-// Function to increment play count
+
 function incrementPlayCount($conn, $song_id) {
     $sql = "UPDATE songs SET plays = plays + 1 WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -41,7 +41,7 @@ function incrementPlayCount($conn, $song_id) {
     mysqli_stmt_close($stmt);
 }
 
-// Handle play request
+
 if (isset($_GET['play_song']) && is_numeric($_GET['play_song'])) {
     $song_id = $_GET['play_song'];
     
@@ -55,16 +55,15 @@ if (isset($_GET['play_song']) && is_numeric($_GET['play_song'])) {
     mysqli_stmt_close($stmt);
     
     if ($song) {
-        // Increment play count
+    
         incrementPlayCount($conn, $song_id);
         
         $file_path = $song['file_path'];
         $full_path = '';
-        
-        // Debug: log the file path
+    
         error_log("Looking for audio file: " . $file_path);
         
-        // Check different possible locations
+
         $possible_paths = [
             'uploads/' . $file_path,
             $file_path,
@@ -99,7 +98,7 @@ if (isset($_GET['play_song']) && is_numeric($_GET['play_song'])) {
             header('Expires: 0');
             header('Accept-Ranges: bytes');
             
-            // Clear any output buffering
+    
             while (ob_get_level()) {
                 ob_end_clean();
             }
@@ -107,15 +106,15 @@ if (isset($_GET['play_song']) && is_numeric($_GET['play_song'])) {
             readfile($full_path);
             exit;
         } else {
-            // File not found - log all possible paths we checked
+          
             error_log("Audio file not found. Checked paths: " . implode(', ', $possible_paths));
             error_log("Current directory: " . __DIR__);
             
-            // Create a simple beep sound as fallback (1 second of 440Hz sine wave)
+ 
             header('Content-Type: audio/wav');
             header('Cache-Control: no-cache');
             
-            // Generate a simple WAV file with a beep
+        
             $sample_rate = 44100;
             $duration = 1; // 1 second
             $frequency = 440; // A4 note
@@ -140,7 +139,7 @@ if (isset($_GET['play_song']) && is_numeric($_GET['play_song'])) {
     }
 }
 
-// Handle AJAX requests for song data
+
 if (isset($_GET['get_songs']) && $_GET['get_songs'] == 'true') {
     header('Content-Type: application/json');
     
@@ -190,7 +189,7 @@ if (!is_dir('uploads')) {
     echo "</ul>";
 }
 
-// Vérifier les chansons dans la base de données
+
 echo "<h3>Chansons dans la base de données:</h3>";
 $songs_sql = "SELECT id, title, artist, file_path FROM songs";
 $result = mysqli_query($conn, $songs_sql);
@@ -214,7 +213,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Aucune chanson dans la base de données.</p>";
 }
 
-// Tester l'accès direct aux fichiers
+
 echo "<h3>Test d'accès direct aux fichiers:</h3>";
 $test_files = ['diamonds.mp3', 'blinding_lights.mp3', 'save_your_tears.mp3'];
 
@@ -237,7 +236,7 @@ foreach ($test_files as $test_file) {
     }
 }
 
-// If no specific action, show the HTML page
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
