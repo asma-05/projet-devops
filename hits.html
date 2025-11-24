@@ -376,7 +376,7 @@
             background-color: var(--accent);
         }
         
-        /* Music Player Styles */
+       
         .music-player {
             position: fixed;
             bottom: 0;
@@ -724,7 +724,7 @@
             <section class="chart-section">
                 <h3><i class="fas fa-globe-americas"></i> Global Top 10</h3>
                 <div class="song-list" id="top-songs-list">
-                    <!-- Les chansons seront chargées dynamiquement -->
+                   
                     <div class="loading">Loading top songs...</div>
                 </div>
             </section>
@@ -732,7 +732,7 @@
             <section class="chart-section">
                 <h3><i class="fas fa-heart"></i> Most Loved</h3>
                 <div class="song-list" id="loved-songs-list">
-                    <!-- Les chansons seront chargées dynamiquement -->
+                    
                     <div class="loading">Loading most loved songs...</div>
                 </div>
             </section>
@@ -741,13 +741,13 @@
         <section class="artist-highlights">
             <h3><i class="fas fa-crown"></i> Artist Highlights</h3>
             <div class="artist-grid" id="artists-grid">
-                <!-- Les artistes seront chargés dynamiquement -->
+                
                 <div class="loading">Loading artists...</div>
             </div>
         </section>
     </main>
     
-    <!-- Music Player -->
+   
     <div class="music-player" id="music-player">
         <div class="player-container">
             <div class="player-info">
@@ -804,17 +804,17 @@
         </div>
     </footer>
 
-    <!-- Audio Element -->
+   
     <audio id="audio-player" style="display: none;"></audio>
 
     <script>
-        // Song data
+        
         let songs = [];
         let topArtists = [];
         let currentSongIndex = -1;
         let isPlaying = false;
 
-        // DOM elements
+        
         const audioPlayer = document.getElementById('audio-player');
         const musicPlayer = document.getElementById('music-player');
         const currentSongElement = document.getElementById('current-song');
@@ -829,7 +829,7 @@
         const volumeLevel = document.getElementById('volume-level');
         const muteBtn = document.getElementById('mute-btn');
 
-        // Load songs from PHP backend
+        
         async function loadSongs() {
             try {
                 const response = await fetch('hits.php?get_songs=true');
@@ -839,7 +839,7 @@
                     songs = data.songs;
                     topArtists = data.top_artists;
                     
-                    // Update UI with loaded data
+                    
                     updateSongsUI();
                     updateArtistsUI();
                 } else {
@@ -854,17 +854,17 @@
             }
         }
 
-        // Update songs in the UI
+        
         function updateSongsUI() {
             const topSongsList = document.getElementById('top-songs-list');
             const lovedSongsList = document.getElementById('loved-songs-list');
             
-            // Sort songs by plays for top songs
+            
             const topSongs = [...songs].sort((a, b) => b.plays - a.plays).slice(0, 10);
-            // Sort songs by likes for most loved
+           
             const lovedSongs = [...songs].sort((a, b) => b.likes - a.likes).slice(0, 10);
             
-            // Render top songs
+            
             topSongsList.innerHTML = topSongs.map((song, index) => `
                 <div class="song-item" data-song-id="${song.id}">
                     <div class="song-rank ${index < 3 ? 'top-3' : ''}">${index + 1}</div>
@@ -888,7 +888,7 @@
                 </div>
             `).join('');
             
-            // Render loved songs
+            
             lovedSongsList.innerHTML = lovedSongs.map((song, index) => `
                 <div class="song-item" data-song-id="${song.id}">
                     <div class="song-rank ${index < 3 ? 'top-3' : ''}">${index + 1}</div>
@@ -912,11 +912,11 @@
                 </div>
             `).join('');
             
-            // Re-attach event listeners after updating DOM
+            
             attachSongEventListeners();
         }
 
-        // Update artists in the UI
+       
         function updateArtistsUI() {
             const artistsGrid = document.getElementById('artists-grid');
             
@@ -933,7 +933,7 @@
             `).join('');
         }
 
-        // Format large numbers
+        
         function formatNumber(num) {
             if (num >= 1000000) {
                 return (num / 1000000).toFixed(1) + 'M';
@@ -943,7 +943,7 @@
             return num;
         }
 
-        // Format time from seconds to MM:SS
+        
         function formatTime(seconds) {
             if (isNaN(seconds)) return '0:00';
             const mins = Math.floor(seconds / 60);
@@ -951,7 +951,7 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Update progress bar
+        
         function updateProgress() {
             if (audioPlayer.duration && !isNaN(audioPlayer.duration)) {
                 const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -960,32 +960,32 @@
             }
         }
 
-        // Play a song
+        
         function playSong(songId) {
             if (!songs.length) return;
             
             const songIndex = songs.findIndex(song => song.id == songId);
             if (songIndex === -1) return;
             
-            // Reset all song items and buttons
+           
             document.querySelectorAll('.song-item').forEach(item => item.classList.remove('playing'));
             document.querySelectorAll('.play-btn').forEach(btn => {
                 btn.innerHTML = '<i class="fas fa-play"></i>';
                 btn.classList.remove('playing');
             });
             
-            // Set current song
+            
             currentSongIndex = songIndex;
             const song = songs[songIndex];
             
-            // Update player UI
+            
             currentSongElement.textContent = song.title;
             currentArtistElement.textContent = song.artist;
             
-            // Set audio source - use the correct endpoint
+            
             audioPlayer.src = `hits.php?play_song=${song.id}`;
             
-            // Highlight current song
+           
             const currentSongItem = document.querySelector(`.song-item[data-song-id="${song.id}"]`);
             const currentPlayBtn = document.querySelector(`.play-btn[data-song-id="${song.id}"]`);
             if (currentSongItem && currentPlayBtn) {
@@ -994,16 +994,16 @@
                 currentPlayBtn.classList.add('playing');
             }
             
-            // Show player
+            
             musicPlayer.classList.add('active');
             
-            // Play the audio
+            
             audioPlayer.play().then(() => {
                 isPlaying = true;
                 playPauseIcon.classList.remove('fa-play');
                 playPauseIcon.classList.add('fa-pause');
                 
-                // Update duration when metadata is loaded
+                
                 audioPlayer.addEventListener('loadedmetadata', function() {
                     durationElement.textContent = formatTime(audioPlayer.duration);
                 }, { once: true });
@@ -1014,7 +1014,7 @@
             });
         }
 
-        // Toggle play/pause
+        
         function togglePlayPause() {
             if (currentSongIndex === -1 || !songs.length) return;
             
@@ -1023,7 +1023,7 @@
                 playPauseIcon.classList.remove('fa-pause');
                 playPauseIcon.classList.add('fa-play');
                 
-                // Update song button
+                
                 const currentSong = songs[currentSongIndex];
                 const currentPlayBtn = document.querySelector(`.play-btn[data-song-id="${currentSong.id}"]`);
                 if (currentPlayBtn) {
@@ -1034,7 +1034,7 @@
                 playPauseIcon.classList.remove('fa-play');
                 playPauseIcon.classList.add('fa-pause');
                 
-                // Update song button
+               
                 const currentSong = songs[currentSongIndex];
                 const currentPlayBtn = document.querySelector(`.play-btn[data-song-id="${currentSong.id}"]`);
                 if (currentPlayBtn) {
@@ -1044,21 +1044,21 @@
             isPlaying = !isPlaying;
         }
 
-        // Play next song
+        
         function playNextSong() {
             if (currentSongIndex === -1 || !songs.length) return;
             const nextIndex = (currentSongIndex + 1) % songs.length;
             playSong(songs[nextIndex].id);
         }
 
-        // Play previous song
+        
         function playPrevSong() {
             if (currentSongIndex === -1 || !songs.length) return;
             const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
             playSong(songs[prevIndex].id);
         }
 
-        // Set progress on click
+        
         function setProgress(e) {
             if (!audioPlayer.duration || isNaN(audioPlayer.duration)) return;
             
@@ -1068,7 +1068,7 @@
             audioPlayer.currentTime = percent * audioPlayer.duration;
         }
 
-        // Set volume on click
+       
         function setVolume(e) {
             const width = this.clientWidth;
             const clickX = e.offsetX;
@@ -1076,7 +1076,7 @@
             audioPlayer.volume = volume;
             volumeLevel.style.width = `${volume * 100}%`;
             
-            // Update mute button icon
+          
             if (volume === 0) {
                 muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
             } else if (volume < 0.5) {
@@ -1086,7 +1086,7 @@
             }
         }
 
-        // Toggle mute
+        
         function toggleMute() {
             if (audioPlayer.volume > 0) {
                 audioPlayer.volume = 0;
@@ -1099,12 +1099,12 @@
             }
         }
 
-        // Attach event listeners to songs
+        
         function attachSongEventListeners() {
-            // Song item click events
+            
             document.querySelectorAll('.song-item').forEach(item => {
                 item.addEventListener('click', function(e) {
-                    // Don't trigger if play button was clicked
+                    
                     if (!e.target.closest('.play-btn')) {
                         const songId = this.getAttribute('data-song-id');
                         playSong(songId);
@@ -1112,13 +1112,13 @@
                 });
             });
 
-            // Play button click events
+            
             document.querySelectorAll('.play-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent triggering song item click
+                    e.stopPropagation(); 
                     const songId = this.getAttribute('data-song-id');
                     
-                    // If this song is already playing, toggle pause
+                   
                     const currentSong = songs[currentSongIndex];
                     if (currentSong && currentSong.id == songId && isPlaying) {
                         togglePlayPause();
@@ -1129,7 +1129,7 @@
             });
         }
 
-        // Utility functions
+        
         function escapeHtml(str) {
             if (str === undefined || str === null) return '';
             return String(str)
@@ -1140,7 +1140,7 @@
                 .replace(/'/g, '&#039;');
         }
 
-        // Event listeners
+        
         playPauseBtn.addEventListener('click', togglePlayPause);
         document.getElementById('prev-btn').addEventListener('click', playPrevSong);
         document.getElementById('next-btn').addEventListener('click', playNextSong);
@@ -1148,7 +1148,7 @@
         volumeBar.addEventListener('click', setVolume);
         muteBtn.addEventListener('click', toggleMute);
 
-        // Audio event listeners
+        
         audioPlayer.addEventListener('timeupdate', updateProgress);
 
         audioPlayer.addEventListener('ended', function() {
@@ -1156,7 +1156,7 @@
             playPauseIcon.classList.remove('fa-pause');
             playPauseIcon.classList.add('fa-play');
             
-            // Reset song button
+           
             if (currentSongIndex !== -1) {
                 const currentSong = songs[currentSongIndex];
                 const currentPlayBtn = document.querySelector(`.play-btn[data-song-id="${currentSong.id}"]`);
@@ -1179,17 +1179,17 @@
             alert('Loading next month\'s hits...');
         });
 
-        // Set current month
+        
         document.getElementById('current-month').textContent = new Date().toLocaleString('en-US', { 
             month: 'long', 
             year: 'numeric' 
         });
 
-        // Initialize volume
+        
         audioPlayer.volume = 0.7;
         volumeLevel.style.width = '70%';
 
-        // Load songs when page loads
+        
         document.addEventListener('DOMContentLoaded', loadSongs);
         
     </script>
